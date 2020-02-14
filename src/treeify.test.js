@@ -5,12 +5,12 @@ const mochaEach = require('mocha-each');
 const { getLineStartSpaces, rawFormatToObject } = require('./treeify');
 
 const loadFixtureFile = async (name) => {
-  const contents = await fs.readFile(`${__dirname}/fixtures/${name}.txt`);
+  const contents = await fs.readFile(`${__dirname}/fixtures/${name}/source.txt`);
   return contents.toString();
 }
 
 const loadFixtureJSONFile = async(name) => {
-  const contents = await fs.readFile(`${__dirname}/fixtures/${name}.json`);
+  const contents = await fs.readFile(`${__dirname}/fixtures/${name}/output.json`);
   const parsedContents = JSON.parse(contents.toString());
   return parsedContents;
 }
@@ -41,7 +41,7 @@ describe('treeify', () => {
         "1", "2", "3",
       ])
       .it('fixture %s', async (fixtureName) => {
-        const { raw, json } = await loadFixture(`rawFormatToObject/${fixtureName}`);
+        const { raw, json } = await loadFixture(`./rawFormatToObject/${fixtureName}`);
         const result = rawFormatToObject(raw);
         assert.deepEqual(result, json);
       });

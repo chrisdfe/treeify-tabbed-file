@@ -7,14 +7,11 @@ const PATH_SEPEARATOR = '.'
 
 const isSpaceCharacter = str => str === ' ';
 
-const getPathSeparatorCount = (path) => {
-  let count = 0;
-  for (let char of path) {
-    if (char === PATH_SEPEARATOR) {
-      count ++;
-    }
-  }
-  return count;
+const createPathSeperatorRegex = seperator => new RegExp(`/\w\${seperator}\w/`, 'g');
+
+const getPathSeparatorCount = path => {
+  const seperatorRegex = createPathSeperatorRegex(PATH_SEPEARATOR);
+  return (path.match(seperatorRegex) || []).length
 }
 
 const getLineStartSpaces = str => {
@@ -31,7 +28,8 @@ const getLineStartSpaces = str => {
 
 module.exports.getLineStartSpaces = getLineStartSpaces;
 
-const rawFormatToObject = (str) => {
+
+const rawFormatToObject = str => {
   const paths = [];
   const lines = str.split('\n');
   const currentPath = [];
@@ -47,7 +45,6 @@ const rawFormatToObject = (str) => {
       currentPath.pop();
     } else if (tabIndex < currentTabIndex) {
       const amountFewer = currentTabIndex - tabIndex;
-      // console.log('amountFewer', amountFewer, ": ", tabIndex, currentTabIndex);
       [...(new Array(amountFewer + 1))].forEach(() => {
         currentPath.pop();
       })
@@ -83,7 +80,8 @@ const rawFormatToObject = (str) => {
 
 module.exports.rawFormatToObject = rawFormatToObject;
 
-const treeifyFile = async (file) => {
+
+const treeifyFile = async file => {
    const contents = await fs.readFile(file);
    const fileTreeObject = rawFormatToObject(contents.toString());
    const tree = treeify(fileTreeObject);
