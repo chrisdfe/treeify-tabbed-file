@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "fs-extra": "^8.1.0",
-    "lodash-es": "^4.17.15",
     "lodash.set": "^4.3.2",
     "mocha": "^7.0.1",
     "mocha-each": "^2.0.1",
