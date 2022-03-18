@@ -1,0 +1,8 @@
+└─ fruits
+   ├─ oranges
+   │  └─ mandarin
+   │     ├─ clementine
+   │     └─ tangerine
+   └─ apples
+      └─ gala
+         └─ pink lady

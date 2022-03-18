@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "create-demo": "node ./scripts/tree.js --inputFile demo/input.txt --outputFile demo/output.txt",
     "test": "./node_modules/mocha/bin/mocha ./src/*.test.js"
   },
   "dependencies": {

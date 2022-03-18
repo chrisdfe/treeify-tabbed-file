@@ -39,8 +39,13 @@ const rawFormatToObject = str => {
     const spaceCount = getLineStartSpaces(line);
     const tabIndex = spaceCount / TAB_SPACING;
     const trimmedLine = line.trimLeft();
-    if (!trimmedLine) return;
+    
+    // skip over empty lines
+    if (!trimmedLine) {
+      return
+    };
 
+    // Use indentation level to determine current tree depth
     if (tabIndex === currentTabIndex) {
       currentPath.pop();
     } else if (tabIndex < currentTabIndex) {
