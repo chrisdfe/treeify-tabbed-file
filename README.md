@@ -1,8 +1,10 @@
 # treeify-tabbed-file
 
-A simple command line utility wrapper around (object-treeify)[https://www.npmjs.com/package/object-treeify] to convert a file like this:
+A simple command line utility wrapper around [object-treeify](https://www.npmjs.com/package/object-treeify) to convert a file like this:
 
-```input.txt
+```
+input.txt
+
 fruits
   oranges
     mandarin
@@ -13,9 +15,11 @@ fruits
       pink lady
 ```
 
-into to this:
+into this:
 
-```output.txt
+```
+output.txt
+
 └─ fruits
    ├─ oranges
    │  └─ mandarin
